@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "DOM là gì?"
-date:   2014-10-12 22:43:01
+date:   2014-09-17 22:43:01
 categories: vietnamese
 tags: coding
 ---
