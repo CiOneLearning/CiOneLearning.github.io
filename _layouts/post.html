@@ -1,15 +1,46 @@
 ---
 layout: default
 ---
-<div class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-  </header>
-
-  <article class="post-content">
-    {{ content }}
+<article class="summer-index-post post row">
+    <div class="small-12 medium-3 large-2 columns datetime">
+        <span class="summer-post-meta">
+            <time datetime="{{page.date}}">
+                <span class="day">
+                    {{page.date | date: "%-d"}}
+                </span>
+                <span class="month-year">
+                    {{page.date | date:"%b, %Y "}}
+                </span>
+            </time>
+        </span>
+    </div>
+    <div class="small-12 medium-9 large-10 columns">
+        <header class="summer-post-header">
+            <h3 class="summer-post-title">
+              <a id="post" href="{{ post.url }}">{{page.title}}</a>
+            </h3>
+        </header>
+        <div class="summer-index-post-tags">
+        {% for tag in page.tags %}
+          <a class="tag-link" href="">{{tag}}</a>
+        {% endfor %}
+        </div> 
+            
+            <div class="cf"></div>
+        <section class="summer-post-excerpt">
+	          {{ page.content }}
+        </section>
+    </div>
   </article>
 
-</div>
+ {% if paginator %}
+  {% else %}
+	  <nav class="pagination" role="navigation">
+	  {% if page.previous %}
+	    <a class="newer-posts faded" href="{{page.previous.url}}"><i class="fa fa-chevron-left"></i> Trang trước</a>
+	  {% endif %}
+	  {% if page.next %}
+	    <a class="newer-posts faded" href="{{page.next.url}}">Trang kế <i class="fa fa-chevron-right"></i></a>
+	  {% endif %}
+	</nav>
+{% endif %}

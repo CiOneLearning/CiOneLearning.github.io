@@ -1,11 +1,31 @@
-<head>
+<!doctype html>
+<html class="no-js" lang="en"> 
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# blog: http://ogp.me/ns/blog#">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}">
+    <meta name="description" content="a platform to build your own online class">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="shortcut icon" href="http://www.learnbycast.com/favicon.ico">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="http://summer.pxt.be/assets/css/vendor/normalize.css?v=17ba0cf34e">-->
+    <link rel="stylesheet" href="/css/foundation.min.css?v=17ba0cf34e">
+    <link rel="stylesheet" href="/css/style.css?v=17ba0cf34e">
+    <!--<link rel="stylesheet" href="http://summer.pxt.be/assets/css/post.css?v=17ba0cf34e">-->
+    <script src="/css/modernizr.js?v=17ba0cf34e"></script>   
+    <link rel="stylesheet" href="/css/syntax.css">
+    
+<link rel="alternate" type="application/rss+xml" title="Learn by Cast" href="/rss/">
+<link rel="canonical" href="http://blog.learnbycast.com/" />
+<style>
+    table {
+        background: #fff;
+        margin: 0 !important;
+        border: 0 !important;
+        /* table-layout: fixed; */
+        width: inherit !important;
+        }
+</style>
+<meta http-equiv="x-dns-prefetch-control" content="off"/>
 </head>

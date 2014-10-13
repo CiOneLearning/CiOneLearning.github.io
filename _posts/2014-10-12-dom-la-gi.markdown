@@ -1,0 +1,63 @@
+---
+layout: post
+title:  "DOM là gì?"
+date:   2014-10-12 22:43:01
+categories: vietnamese
+tags: coding
+---
+Trong giới lập trình web, thuật ngữ DOM không còn xa lạ vì nó hỗ trợ cho họ làm việc trên các tài liệu HTML và XML một cách dễ dàng. Vậy DOM là gì? Nó được viết tắt bởi Document Object Model, là một API (có thể hiểu là giao diện lập trình ứng dụng) cho các tài liệu như HTML hoặc XML.  
+
+Thông qua DOM, các chương trình hoặc những ngôn ngữ lập trình khác có thể truy xuất tới bất kỳ phần tử (tag/element) trong trang tài liệu. Ngoài việc truy xuất, nó còn cung cấp chức năng chỉnh sửa, thêm hoặc bớt nội dung một cách chủ động, ngay khi trang tài liệu đang thực thi.
+Thật ra DOM được tổ chức W3C tạo ra với mục đích truy xuất tới mọi loại tài liệu (core DOM). Tuy nhiên, các nhà phát triển hiện nay thường sử dụng hai loại là XML DOM và HTML DOM. XML DOM là mô hình dành riêng cho tài liệu XML. Và dĩ nhiên HTML DOM sẽ dành riêng cho tài liệu HTML.
+Trong bài viết này, tôi và các bạn sẽ cùng nhau tìm hiểu về cấu trúc của HTML DOM.
+#Cấu trúc HTML DOM
+Trong tài liệu HTML, mỗi phần tử có thể chứa bên trong nó là một hoặc nhiều phần tử khác và bao gồm luôn nội dung của phần tử đó. Một phần tử như vậy gọi là container. Tương tự như tài liệu HTML, thì HTML DOM cũng có những container và mỗi container này được gọi là nút (node). Và mỗi container trong trang HTML mối quan hệ với những container khác trong cùng một trang, những mối quan hệ này có thể là cha - con, anh - em. Khi chuyển qua HTML DOM thì mối quan hệ đó sẽ được biểu diễn bằng 1 đường nối (line), thể hiện mối quan hệ giữa node này với node kia. Kết quả là khi cả trang tài liệu HTML được chuyển qua HTML DOM, ta sẽ thấy nó có hình dạng giống như 1 cây gồm nhiều nút và mỗi nút này thể hiện mối quan hệ với nhau thông qua đường nối. Hãy cùng xem ví dụ cụ thể:
+Chúng ta có 1 trang tài liệu HTML như sau:
+{% highlight html linenos %}
+<html>
+    <head>
+    </head>
+    <body>
+    	<h1>Hello</h1>
+    	<p>
+		Welcome to CiOne <a href="lophoc.cione.com.vn">Click here to join</a>
+    	</p>
+    </body>
+</html>
+{% endhighlight %}
+
+Tương ứng tài liệu trên ta sẽ có cấu trúc HTML DOM như hình:
+![Alt Hình 1: Cấu trúc dạng cây HTML DOM theo ví dụ.]({{ site.url }}/assets/images/dom_hinh1.png "Hình 1: Cấu trúc dạng cây HTML DOM theo ví dụ.")  
+
+Từ tài liệu HTML khi chuyển qua HTML DOM chúng ta luôn có nút gốc (Root) là document, từ nút gốc này ta sẽ di chuyển tới các nút khác. Nhìn vào cấu trúc này thì HTML DOM sẽ có các thành phần sau:  
+
+###Nút (node):
+Tương ứng với một container hay element trong tài liệu HTML.  
+
+###Mối quan hệ (relationship):
+Được thể hiện bằng một đường nối từ nút này đến nút khác, và có hai loại mối quan hệ, gồm:  
+
+####Quan hệ cha - con (parent - child):  
+Nhìn hình trên ta dễ dàng nhận ra các mối quan hệ cha - con như: html là cha của hai nút con head và body, body là cha của h1 và p, p là cha của a; và chính vì nó chỉ hơn nhau đúng 1 cấp nên được gọi cụ thể là quan hệ cha - con trực tiếp. Vì thế, còn khi từ hai cấp trở lên nó sẽ có tên gọi là quan hệ cha - con gián tiếp ví dụ như body với a.  
+
+####Quan hệ anh - em (sibling):  
+
+mối quan hệ ngang cấp và có cùng 1 nút cha. Ví dụ như head và body là anh em vì có cùng cha là html.
+Nút văn bản (Text node)
+Gần giống như một nút nhưng nó chỉ chứa văn bản (text) và dĩ nhiên nó không có con. Thật tế một thẻ paragraph (p) thì có 2 nút, gồm: nút thứ nhất là p, nút còn lại là text node chứa nội dung của thẻ p, và text node này là con của nút p.  
+
+Tóm lại, cấu trúc HTML DOM được tổ chức phân cấp, có dạng cây, gồm các thành phần nút (node), mối quan hệ được biểu diễn bằng đường gạch nối và nút văn bản (text node) trong đó nút gốc là document. Dựa trên cấu trúc này, chúng ta có thể dễ dàng tìm kiếm, thay đổi, thêm hoặc xoá các phần tử trang HTML.  
+
+<div class="panel">
+<p>
+	Bản quyền<br>
+	Nội dung trong tài liệu này thuộc bản quyền của CiOne.  <br/>
+	Nguồn tham khảo
+	<ol>
+	 <li> <a href="http://www.w3schools.com/js/js_htmldom.asp">W3school</a></li>
+	 <li>  <a href="http://www.informit.com/library/content.aspx?b=STY_JavaScript_24_hours&seqNum=199">Informit</a></li>
+	 <li>  <a href="http://www.codeproject.com/Articles/35803/Chapter-Document-Object-Model-DOM-Objects-and-C">Code Project</a></li>
+	</ol>
+</p>
+</div>
+

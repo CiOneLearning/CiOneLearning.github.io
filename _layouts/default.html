@@ -6,14 +6,20 @@
   <body>
 
     {% include header.html %}
-
-    <div class="page-content">
-      <div class="wrapper">
+<main class="summer-content" role="main">
         {{ content }}
-      </div>
-    </div>
-
+      {% if paginator %}
+        <nav class="pagination" role="navigation">
+          {% if paginator.previous_page %}
+            <a class="newer-posts faded" href="/page/{{ paginator.previous_page }}"><i class="fa fa-chevron-left"></i> Trang trước</a>
+          {% endif %}
+          {% if paginator.next_page %}
+            <a class="newer-posts faded" href="/page/{{ paginator.next_page }}">Trang kế <i class="fa fa-chevron-right"></i></a>
+          {% endif %}
+      {% endif %}
+      </nav>
     {% include footer.html %}
+</main>
 
   </body>
 
